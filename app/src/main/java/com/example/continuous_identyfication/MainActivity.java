@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mWebview.loadUrl("https://www.google.pl");
+        mWebview.loadUrl("https://www.wykop.pl/mikroblog/hot/ostatnie/6/");
         setContentView(mWebview);
 
     }
