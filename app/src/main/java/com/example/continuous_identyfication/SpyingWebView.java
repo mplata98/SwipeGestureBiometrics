@@ -1,5 +1,6 @@
 package com.example.continuous_identyfication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.FileObserver;
@@ -40,7 +41,7 @@ public class SpyingWebView extends WebView {
         this.server = new ServerSide(context, communicationModule);
     }
 
-    public SpyingWebView(MainActivity mainActivity) {
+    public SpyingWebView(Context mainActivity) {
         super(mainActivity);
         this.context = mainActivity;
         this.communicationModule = new CommunicationModule(1, context);
@@ -104,14 +105,22 @@ public class SpyingWebView extends WebView {
         try (Scanner scanner = new Scanner(new File(path));) {
             while (scanner.hasNextLine()) {
                 if (scanner.nextLine().trim().equals("0")) {
-                    toastNo.show();
+                    this.onAccept();
                 } else {
-                    toastYes.show();
+                    this.onDecline();
                 }
             }
         } catch (FileNotFoundException e) {
             System.err.println("Empty file");
             e.printStackTrace();
         }
+    }
+
+    public void onDecline() {
+        toastYes.show();
+    }
+
+    public void onAccept() {
+        toastNo.show();
     }
 }

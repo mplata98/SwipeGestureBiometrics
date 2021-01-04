@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         mWebview.getSettings().setJavaScriptEnabled(true); // enable javascript
 
+        this.getSupportActionBar().hide();
+
         final Activity activity = this;
 
         mWebview.setWebViewClient(new WebViewClient() {
